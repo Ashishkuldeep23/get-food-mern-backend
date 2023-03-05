@@ -17,7 +17,6 @@ router.post( "/signIn" , createUser)
 // // // loginguser ---->
 router.post( "/logIn" , logInUser)
 
-
 // // // Gwet data on load ------------------->
 router.get("/getFoodData" , getAllData)
 
