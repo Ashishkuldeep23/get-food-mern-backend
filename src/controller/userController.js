@@ -9,8 +9,9 @@ const userModel = require("../model/userSchema")
 // // Some imrotant regex are ----------->
 
 const nameValidation = (/^[a-zA-Z]+([\s][a-zA-Z]+)*$/);
-const validateEmail = (/^([a-z0-9._%-]+@[a-z0-9.-]+\.[a-z]{2,6})*$/);
-const validatePassword = (/^(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,15}$/)
+const addressValidation = (/^[a-zA-Z0-9#?!@$%^&*-,.|]+)*$/);
+const emailValidation = (/^([a-z0-9._%-]+@[a-z0-9.-]+\.[a-z]{2,6})*$/);
+const passwordValidation = (/^(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,15}$/)
 
 
 const { isValidEntry } = require("../validator/validator")
@@ -30,11 +31,11 @@ const createUser = async function (req, res) {
         // // // Some validation here --------->
         if (!isValidEntry(name) || !nameValidation.test(name)) return res.status(400).send({ status: false, message: "please enter a valid name" })
 
-        if (!isValidEntry(email) || !validateEmail.test(email)) return res.status(400).send({ status: false, message: "Email is invalid, Please check your Email address" });
+        if (!isValidEntry(email) || !emailValidation.test(email)) return res.status(400).send({ status: false, message: "Email is invalid, Please check your Email address" });
 
-        if (!isValidEntry(password) || !validatePassword.test(password)) return res.status(400).send({ status: false, message: "use a strong password at least =>  one special, one Uppercase, one lowercase (character) one numericValue and password must be eight characters or longer)" });
+        if (!isValidEntry(password) || !passwordValidation.test(password)) return res.status(400).send({ status: false, message: "use a strong password at least =>  one special , one lowercase (character) and one numericValue and password must be six digit)" });
 
-        if (!isValidEntry(address) || !nameValidation.test(address)) return res.status(400).send({ status: false, message: "please enter a valid Address" })
+        if (!isValidEntry(address) || !addressValidation.test(address)) return res.status(400).send({ status: false, message: "please enter a valid Address only these [a-zA-Z0-9#?!@$%^&*-,.|] allowed" })
 
 
         // // Already email ---->
