@@ -9,7 +9,7 @@ const userModel = require("../model/userSchema")
 // // Some imrotant regex are ----------->
 
 const nameValidation = (/^[a-zA-Z]+([\s][a-zA-Z]+)*$/);
-const addressValidation = (/^[a-zA-Z0-9#?!@$%^&*-,.|]+)*$/);
+const addressValidation = (/^[a-zA-Z0-9#?!@$%^&*-,. |]*$/);
 const emailValidation = (/^([a-z0-9._%-]+@[a-z0-9.-]+\.[a-z]{2,6})*$/);
 const passwordValidation = (/^(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,15}$/)
 
