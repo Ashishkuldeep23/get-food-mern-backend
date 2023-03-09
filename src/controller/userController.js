@@ -79,7 +79,7 @@ const logInUser = async function(req , res){
         if(!userDataInDB) return res.status(400).send({status:false , message : "Email not present in Database."})
 
         
-        let passCompare = await bcrypt.compare(req.body.password , userDataInDB.password)
+        let passCompare = await bcrypt.compare(password , userDataInDB.password)
         
         // console.log("Yess")
         if(!passCompare) return res.status(400).send({status: false , message : "Password not matched with DB password"})
