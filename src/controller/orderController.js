@@ -45,7 +45,6 @@ async function newOrder(req , res){
 
 
 
-
 async function getOrder(req ,res){
     try{
         let token = req.body.token
@@ -53,9 +52,10 @@ async function getOrder(req ,res){
 
         let findOrder = await orderModel.findOne({user : verfyToken.userId})
 
-        if(!findOrder){
-            return res.status(400).send({status : false , message : "No order found , please add item in cart and press button Check Out"})
-        }
+        // // // Now this data not found is done on frontend ---->
+        // if(!findOrder){
+        //     return res.status(400).send({status : false , message : "No order found , please add item in cart and press button Check Out"})
+        // }
 
         return res.status(200).send({status : true , data : findOrder , message : "Successful" })
 
